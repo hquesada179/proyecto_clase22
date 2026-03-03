@@ -17,60 +17,7 @@
                 </div>
             </div>
 
-            @php
-                // ✅ Productos de ejemplo con imágenes LOCALES (public/Images/Products)
-                $products = [
-                    [
-                        'id_producto' => 1,
-                        'nombre' => 'Camisa Oversize',
-                        'precio' => 65000,
-                        'descripcion' => 'Camisa algodón, talla única.',
-                        'imagen' => 'Images/Products/oversize.jpg',
-                        'estado' => 1
-                    ],
-                    [
-                        'id_producto' => 2,
-                        'nombre' => 'Pantalón Cargo',
-                        'precio' => 120000,
-                        'descripcion' => 'Pantalón con bolsillos laterales.',
-                        'imagen' => 'Images/Products/cargo.jpg',
-                        'estado' => 0
-                    ],
-                    [
-                        'id_producto' => 3,
-                        'nombre' => 'Tenis Deportivos',
-                        'precio' => 180000,
-                        'descripcion' => 'Tenis casual, suela cómoda.',
-                        'imagen' => 'Images/Products/tennis.png',
-                        'estado' => 1
-                    ],
-                    [
-                        'id_producto' => 4,
-                        'nombre' => 'Gorra Negra',
-                        'precio' => 45000,
-                        'descripcion' => 'Gorra ajustable, estilo urbano.',
-                        'imagen' => 'Images/Products/gorra.jpg',
-                        'estado' => 1
-                    ],
-                    [
-                        'id_producto' => 5,
-                        'nombre' => 'Chaqueta Denim',
-                        'precio' => 210000,
-                        'descripcion' => 'Chaqueta jean, look clásico.',
-                        'imagen' => 'Images/Products/chaqueta.jpg',
-                        'estado' => 0
-                    ],
-                    [
-                        'id_producto' => 6,
-                        'nombre' => 'Vestido Floral',
-                        'precio' => 135000,
-                        'descripcion' => 'Vestido ligero, estampado floral.',
-                        'imagen' => 'Images/Products/Vestido.jpg',
-                        'estado' => 1
-                    ],
-                ];
-            @endphp
-
+            
             <div class="table-wrap">
                 <table>
                     <thead>
@@ -85,12 +32,12 @@
                     </thead>
 
                     <tbody>
-                    @if(count($products) === 0)
+                    @if(count($miLista) === 0)
                         <tr>
                             <td class="empty" colspan="6">No hay productos para mostrar.</td>
                         </tr>
                     @else
-                        @foreach($products as $p)
+                        @foreach($miLista as $p)
                             @php
                                 $img = $p['imagen'] ?? null;
                                 $imgSrc = $img ? asset($img) : 'https://via.placeholder.com/44?text=IMG';

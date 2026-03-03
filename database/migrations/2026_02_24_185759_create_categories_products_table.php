@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('categories_products', function (Blueprint $table) {
+        Schema::create('products', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->text('description')->nullable();
@@ -21,7 +21,7 @@ return new class extends Migration
             $table->timestamps();
 
             //llave fornea usuario
-    $table->unsignedBigInteger('category_id');
+    
     $table->foreignId('category_id')->references('id')->on('categories');
         });
     }
@@ -33,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('categories_products');
+        Schema::dropIfExists('products');
     }
 };
