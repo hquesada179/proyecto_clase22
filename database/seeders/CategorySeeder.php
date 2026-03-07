@@ -3,22 +3,25 @@
 namespace Database\Seeders;
 
 use App\Models\Category;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class CategorySeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
     public function run()
     {
-        $tecnologia = new Category();
-        $tecnologia->name = "tecnologia";
-        $tecnologia->description = "todo lo relacionado a tecnologia";
-        $tecnologia->save();
+        $categorias = [
+            ['name' => 'Laptops',        'description' => 'Computadoras portátiles para trabajo, estudio y gaming.'],
+            ['name' => 'Periféricos',    'description' => 'Teclados, mouses, webcams y accesorios de entrada.'],
+            ['name' => 'Monitores',      'description' => 'Pantallas para escritorio, gaming y diseño profesional.'],
+            ['name' => 'Audio',          'description' => 'Audífonos, parlantes y equipos de sonido.'],
+            ['name' => 'Almacenamiento', 'description' => 'SSD, discos duros y memorias USB.'],
+            ['name' => 'Redes',          'description' => 'Routers, switches y accesorios de conectividad.'],
+            ['name' => 'Tablets',        'description' => 'Tablets y accesorios para productividad móvil.'],
+            ['name' => 'Componentes',    'description' => 'RAM, fuentes de poder y partes para armar PC.'],
+        ];
 
+        foreach ($categorias as $cat) {
+            Category::create($cat);
+        }
     }
 }
