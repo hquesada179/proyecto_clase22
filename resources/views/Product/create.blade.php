@@ -1,6 +1,5 @@
 @extends('layouts.app')
 @section('content')
-<body>
     <div class="container">
         <div class="card">
             <div class="card__header">
@@ -22,7 +21,6 @@
                     </div>
                 @endif
 
-                {{-- Cambia route('product.store') por tu ruta real --}}
                 <form action="{{ route('product.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
 
@@ -53,17 +51,19 @@
                         </div>
 
                         <div class="row">
-                            <label for="estado">Categoria</label>
-                            <select class="select" id="estado" name="estado" required>
-                                <option value="" disabled {{ old('estado') ? '' : 'selected' }}>Selecciona...</option>
-                                <option value="1" {{ old('estado') == '1' ? 'selected' : '' }}>Activo</option>
-                                <option value="0" {{ old('estado') == '0' ? 'selected' : '' }}>Inactivo</option>
+                            <label for="category_id">Categoría</label>
+                            <select class="select" id="category_id" name="category_id" required>
+                                <option value="" disabled {{ old('category_id') ? '' : 'selected' }}>Selecciona...</option>
+                                @foreach($categories as $cat)
+                                    <option value="{{ $cat->id }}" {{ old('category_id') == $cat->id ? 'selected' : '' }}>
+                                        {{ $cat->name }}
+                                    </option>
+                                @endforeach
                             </select>
                         </div>
                     </div>
 
                     <div class="actions">
-                        {{-- Cambia route('product.index') por tu ruta real --}}
                         <a class="btn btn-ghost" href="{{ route('product.index') }}">Cancelar</a>
                         <button class="btn btn-primary" type="submit">Guardar producto</button>
                     </div>
@@ -72,5 +72,4 @@
             </div>
         </div>
     </div>
-</body>
 @endsection
