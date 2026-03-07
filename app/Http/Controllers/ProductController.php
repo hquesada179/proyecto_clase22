@@ -53,6 +53,12 @@ class ProductController extends Controller
 
     public function imageOnly($id)
     {
-        // Implementado en Paso 6
+        $product = Product::findOrFail($id);
+
+        if (!$product->image) {
+            abort(404, 'Este producto no tiene imagen.');
+        }
+
+        return redirect(asset('storage/' . $product->image));
     }
 }

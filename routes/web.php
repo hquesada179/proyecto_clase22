@@ -12,9 +12,8 @@ Route::prefix('/product')->controller(ProductController::class)->group(function 
     Route::get('/create', 'create')->name('product.create');
     Route::post('/', 'store')->name('product.store');
 
-    // ✅ show (categoria opcional)
-    Route::get('/{id}/{categoria?}', 'show')->name('product.show');
-
-    // ✅ solo imagen (para "Comprar" y abrir otra pestaña)
+    // específica primero para evitar que /{id}/{categoria?} la absorba
     Route::get('/{id}/image', 'imageOnly')->name('product.image');
+
+    Route::get('/{id}/{categoria?}', 'show')->name('product.show');
 });
