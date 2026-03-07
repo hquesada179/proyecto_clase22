@@ -53,7 +53,7 @@
                         </div>
 
                         <div class="row">
-                            <label for="estado">Estado</label>
+                            <label for="estado">Categoria</label>
                             <select class="select" id="estado" name="estado" required>
                                 <option value="" disabled {{ old('estado') ? '' : 'selected' }}>Selecciona...</option>
                                 <option value="1" {{ old('estado') == '1' ? 'selected' : '' }}>Activo</option>

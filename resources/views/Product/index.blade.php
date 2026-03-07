@@ -42,7 +42,7 @@
                                 $img = $p['imagen'] ?? null;
                                 $imgSrc = $img ? asset($img) : 'https://via.placeholder.com/44?text=IMG';
                                 $estado = $p['estado'] ?? 0;
-                                $precio = $p['precio'] ?? 0;
+                                $precio = $p['precio'] ?? 100;
                             @endphp
 
                             <tr>
@@ -56,7 +56,7 @@
 
                                 <td>$ {{ number_format($precio, 0, ',', '.') }}</td>
 
-                                <td>{{ $p['descripcion'] ?? '' }}</td>
+                                <td>{{ $p['descripcion'] ?? 'Productos' }}</td>
 
                                 <td>
                                     @if((string)$estado === "1")
