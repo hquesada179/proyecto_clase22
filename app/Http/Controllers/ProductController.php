@@ -22,7 +22,27 @@ class ProductController extends Controller
 
     public function store(Request $request)
     {
-        // Implementado en Paso 3
+        $request->validate([
+            'nombre'      => 'required|string|max:255',
+            'precio'      => 'required|numeric|min:0',
+            'category_id' => 'required|exists:categories,id',
+            'imagen'      => 'nullable|image|max:2048',
+        ]);
+
+        $imagePath = null;
+        if ($request->hasFile('imagen')) {
+            $imagePath = $request->file('imagen')->store('imagenes', 'public');
+        }
+
+        Product::create([
+            'name'        => $request->nombre,
+            'description' => $request->descripcion,
+            'price'       => $request->precio,
+            'category_id' => $request->category_id,
+            'image'       => $imagePath,
+        ]);
+
+        return redirect()->route('product.index');
     }
 
     public function show($id)

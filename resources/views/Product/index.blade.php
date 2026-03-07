@@ -1,6 +1,5 @@
 @extends('layouts.app')
 @section('content')
-<body>
 <div class="container">
     <div class="card">
         <div class="header">
@@ -11,7 +10,7 @@
         <div class="body">
 
             <div class="topbar">
-                <div class="note">Listado visual (por ahora usando datos de ejemplo).</div>
+                <div class="note">Listado de productos registrados en la base de datos.</div>
                 <div class="search">
                     <input class="input" type="text" placeholder="Buscar (solo visual por ahora)..." disabled>
                 </div>
@@ -27,7 +26,7 @@
                             <th>Nombre</th>
                             <th>Precio</th>
                             <th>Descripción</th>
-                            <th>Estado</th>
+                            <th>Categoría</th>
                         </tr>
                     </thead>
 
@@ -39,31 +38,26 @@
                     @else
                         @foreach($miLista as $p)
                             @php
-                                $img = $p['imagen'] ?? null;
-                                $imgSrc = $img ? asset($img) : 'https://via.placeholder.com/44?text=IMG';
-                                $estado = $p['estado'] ?? 0;
-                                $precio = $p['precio'] ?? 100;
+                                $imgSrc = $p->image
+                                    ? asset('storage/' . $p->image)
+                                    : 'https://via.placeholder.com/44?text=IMG';
                             @endphp
 
                             <tr>
-                                <td>{{ $p['id_producto'] ?? '-' }}</td>
+                                <td>{{ $p->id }}</td>
 
                                 <td>
                                     <img class="thumb" src="{{ $imgSrc }}" alt="img">
                                 </td>
 
-                                <td><strong>{{ $p['nombre'] ?? '' }}</strong></td>
+                                <td><strong>{{ $p->name }}</strong></td>
 
-                                <td>$ {{ number_format($precio, 0, ',', '.') }}</td>
+                                <td>$ {{ number_format($p->price, 0, ',', '.') }}</td>
 
-                                <td>{{ $p['descripcion'] ?? 'Productos' }}</td>
+                                <td>{{ $p->description }}</td>
 
                                 <td>
-                                    @if((string)$estado === "1")
-                                        <span class="badge badge--on">● Activo</span>
-                                    @else
-                                        <span class="badge badge--off">● Inactivo</span>
-                                    @endif
+                                    <span class="badge">{{ $p->category->name ?? '-' }}</span>
                                 </td>
                             </tr>
                         @endforeach
@@ -75,5 +69,4 @@
         </div>
     </div>
 </div>
-</body>
 @endsection
