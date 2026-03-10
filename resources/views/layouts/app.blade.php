@@ -292,7 +292,22 @@
             justify-content: space-between;
             align-items: center;
             gap: 8px;
+            flex-wrap: wrap;
         }
+
+        .card-actions {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .btn-danger {
+            background: #dc2626;
+            color: #fff;
+            border-color: #dc2626;
+        }
+        .btn-danger:hover { background: #b91c1c; border-color: #b91c1c; transform: translateY(-1px); }
 
         .products-empty {
             text-align: center;

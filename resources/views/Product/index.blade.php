@@ -44,7 +44,14 @@
 
                             <div class="product-card__footer">
                                 <span class="badge">{{ $p->category->name ?? '-' }}</span>
-                                <a class="btn btn-sm btn-ghost" href="{{ route('product.show', $p->id) }}">Ver detalle →</a>
+                                <div class="card-actions">
+                                    <a class="btn btn-sm btn-ghost" href="{{ route('product.show', $p->id) }}">Ver detalle →</a>
+                                    <form action="{{ route('product.destroy', $p->id) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-sm btn-danger">Eliminar</button>
+                                    </form>
+                                </div>
                             </div>
                         </div>
                     @endforeach

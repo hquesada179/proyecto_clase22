@@ -52,6 +52,12 @@ class ProductController extends Controller
         return view('product.show', ['product' => $product]);
     }
 
+    public function destroy(Product $product)
+    {
+        $product->delete();
+        return redirect()->route('product.index');
+    }
+
     public function imageOnly($id)
     {
         $product = Product::findOrFail($id);
