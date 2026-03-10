@@ -424,6 +424,60 @@
         tbody tr:hover { background: rgba(37,99,235,.04); }
         .thumb { width: 44px; height: 44px; border-radius: 8px; object-fit: cover; border: 1px solid var(--border); display: block; }
         .empty { text-align: center; padding: 32px 10px; color: var(--muted); font-size: 14px; }
+
+        /* ── Pagination ── */
+        .pagination-wrap {
+            margin-top: 28px;
+            display: flex;
+            justify-content: center;
+        }
+        .pagination {
+            display: flex;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            gap: 6px;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .page-item .page-link,
+        .page-item > span {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 40px;
+            height: 40px;
+            padding: 0 14px;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            background: var(--card);
+            color: var(--text);
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background .18s, border-color .18s, color .18s, transform .18s;
+            white-space: nowrap;
+        }
+        .page-item a.page-link:hover {
+            background: rgba(37,99,235,.07);
+            border-color: var(--primary);
+            color: var(--primary);
+            transform: translateY(-1px);
+        }
+        .page-item.active > span,
+        .page-item.active .page-link {
+            background: var(--primary);
+            border-color: var(--primary);
+            color: #fff;
+        }
+        .page-item.disabled > span,
+        .page-item.disabled .page-link {
+            background: #f8fafc;
+            color: var(--muted);
+            cursor: not-allowed;
+            opacity: .55;
+        }
     </style>
 </head>
 <body>

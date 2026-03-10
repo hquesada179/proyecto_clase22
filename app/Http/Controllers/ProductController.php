@@ -10,7 +10,7 @@ class ProductController extends Controller
 {
     public function index()
     {
-        $miLista = Product::all();
+        $miLista = Product::with('category')->latest('id')->paginate(8);
         return view('product.index', ['miLista' => $miLista]);
     }
 

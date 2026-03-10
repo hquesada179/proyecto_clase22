@@ -6,11 +6,12 @@
             <h1>Catálogo de Productos</h1>
             <a class="btn btn-light" href="{{ route('product.create') }}">+ Nuevo producto</a>
         </div>
+        
 
         <div class="body">
 
             <div class="topbar">
-                <div class="note">{{ $miLista->count() }} producto(s) registrado(s)</div>
+                <div class="note">{{ $miLista->total() }} producto(s) registrado(s)</div>
                 <div class="search">
                     <input class="input" type="text" placeholder="Buscar (próximamente)..." disabled>
                 </div>
@@ -47,6 +48,10 @@
                             </div>
                         </div>
                     @endforeach
+                </div>
+
+                <div class="pagination-wrap">
+                    {{ $miLista->onEachSide(1)->links('pagination::bootstrap-4') }}
                 </div>
             @endif
 
