@@ -9,7 +9,7 @@
 
             <div class="card__body">
 
-                {{-- Errores de validación (si usas Request validation) --}}
+                
                 @if ($errors->any())
                     <div class="error-box">
                         <strong>Revisa estos errores:</strong>
@@ -28,13 +28,13 @@
                         <div class="row">
                             <label for="nombre">Nombre</label>
                             <input class="input" type="text" id="nombre" name="nombre"
-                                   value="{{ old('nombre') }}" placeholder="Ej: Camisa Oversize" required>
+                                   value="{{ old('nombre') }}" placeholder="Ej: Camisa Oversize" >
                         </div>
 
                         <div class="row">
                             <label for="precio">Precio</label>
                             <input class="input" type="number" id="precio" name="precio"
-                                   value="{{ old('precio') }}" placeholder="Ej: 65000" min="0" step="0.01" required>
+                                   value="{{ old('precio') }}" placeholder="Ej: 65000" min="0" step="0.01" >
                             <div class="hint">Puedes usar decimales (step=0.01).</div>
                         </div>
 
@@ -52,7 +52,7 @@
 
                         <div class="row">
                             <label for="category_id">Categoría</label>
-                            <select class="select" id="category_id" name="category_id" required>
+                            <select class="select" id="category_id" name="category_id" >
                                 <option value="" disabled {{ old('category_id') ? '' : 'selected' }}>Selecciona...</option>
                                 @foreach($categories as $cat)
                                     <option value="{{ $cat->id }}" {{ old('category_id') == $cat->id ? 'selected' : '' }}>

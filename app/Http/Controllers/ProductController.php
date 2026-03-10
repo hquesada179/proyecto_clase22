@@ -24,9 +24,10 @@ class ProductController extends Controller
     {
         $request->validate([
             'nombre'      => 'required|string|max:255',
+            'descripcion' => 'required|string',
             'precio'      => 'required|numeric|min:0',
             'category_id' => 'required|exists:categories,id',
-            'imagen'      => 'nullable|image|max:2048',
+            'imagen'      => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
         ]);
 
         $imagePath = null;
