@@ -503,6 +503,7 @@
         </a>
         <div class="navbar__nav">
             <a class="navbar__link" href="{{ route('product.index') }}">Productos</a>
+            <a class="navbar__link" href="{{ route('category.index') }}">Categorías</a>
             <a class="navbar__link" href="{{ route('product.create') }}">+ Nuevo</a>
         </div>
     </nav>

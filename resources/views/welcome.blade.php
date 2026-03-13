@@ -543,15 +543,16 @@
                 <span class="admin-card__arrow">→</span>
             </a>
 
-            {{-- Categorías (próximamente) --}}
-            <div class="admin-card admin-card--disabled">
+            {{-- Categorías (activo) --}}
+            <a href="{{ route('category.index') }}" class="admin-card">
                 <div class="admin-card__icon admin-card__icon--purple">🗂️</div>
                 <div>
                     <div class="admin-card__title">Categorías</div>
                     <div class="admin-card__desc">Crea y organiza las categorías de productos de la tienda.</div>
-                    <div class="admin-card__badge admin-card__badge--soon">Próximamente</div>
+                    <div class="admin-card__badge">Activo</div>
                 </div>
-            </div>
+                <span class="admin-card__arrow">→</span>
+            </a>
 
             {{-- Configuración (próximamente) --}}
             <div class="admin-card admin-card--disabled">

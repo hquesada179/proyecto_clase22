@@ -1,10 +1,20 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', HomeController::class);
+
+Route::prefix('/category')->controller(CategoryController::class)->group(function () {
+    Route::get('/',                'index'  )->name('category.index');
+    Route::get('/create',          'create' )->name('category.create');
+    Route::post('/',               'store'  )->name('category.store');
+    Route::get('/{category}/edit', 'edit'   )->name('category.edit');
+    Route::put('/{category}',      'update' )->name('category.update');
+    Route::delete('/{category}',   'destroy')->name('category.destroy');
+});
 
 Route::prefix('/product')->controller(ProductController::class)->group(function () {
 
