@@ -554,15 +554,16 @@
                 <span class="admin-card__arrow">→</span>
             </a>
 
-            {{-- Configuración (próximamente) --}}
-            <div class="admin-card admin-card--disabled">
-                <div class="admin-card__icon admin-card__icon--green">⚙️</div>
+            {{-- Carrito (activo) --}}
+            <a href="{{ route('cart.index') }}" class="admin-card">
+                <div class="admin-card__icon admin-card__icon--green">🛒</div>
                 <div>
-                    <div class="admin-card__title">Configuración</div>
-                    <div class="admin-card__desc">Nombre de la tienda, moneda, métodos de pago y ajustes generales.</div>
-                    <div class="admin-card__badge admin-card__badge--soon">Próximamente</div>
+                    <div class="admin-card__title">Carrito de compras</div>
+                    <div class="admin-card__desc">Revisa los productos agregados, cantidades y total de la compra.</div>
+                    <div class="admin-card__badge">Activo</div>
                 </div>
-            </div>
+                <span class="admin-card__arrow">→</span>
+            </a>
 
         </div>
     </div>

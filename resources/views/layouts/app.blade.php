@@ -58,6 +58,21 @@
             transition: .15s;
         }
         .navbar__link:hover { color: #fff; background: rgba(255,255,255,.1); }
+        .navbar__cart { position: relative; padding-right: 16px; font-size: 16px; }
+        .cart-badge {
+            position: absolute;
+            top: -2px;
+            right: 2px;
+            background: var(--accent);
+            color: var(--dark);
+            font-size: 10px;
+            font-weight: 900;
+            line-height: 1;
+            padding: 2px 5px;
+            border-radius: 999px;
+            min-width: 16px;
+            text-align: center;
+        }
 
         /* ── Page container ── */
         .container {
@@ -497,6 +512,10 @@
 </head>
 <body>
 
+    @php
+        $cartCount = \App\Models\CartItem::sum('quantity');
+    @endphp
+
     <nav class="navbar">
         <a class="navbar__brand" href="{{ url('/') }}">
             Electronic<span>tech</span>
@@ -505,6 +524,12 @@
             <a class="navbar__link" href="{{ route('product.index') }}">Productos</a>
             <a class="navbar__link" href="{{ route('category.index') }}">Categorías</a>
             <a class="navbar__link" href="{{ route('product.create') }}">+ Nuevo</a>
+            <a class="navbar__link navbar__cart" href="{{ route('cart.index') }}">
+                🛒
+                @if($cartCount > 0)
+                    <span class="cart-badge">{{ $cartCount }}</span>
+                @endif
+            </a>
         </div>
     </nav>
 

@@ -10,6 +10,13 @@
 
         <div class="body">
 
+            @if(session('cart_success'))
+                <div style="margin:0 0 18px; padding:12px 16px; border-radius:10px; font-size:14px; font-weight:600;
+                            background:rgba(16,185,129,.08); border:1px solid rgba(16,185,129,.25); color:#065f46;">
+                    🛒 {{ session('cart_success') }}
+                </div>
+            @endif
+
             <div class="topbar">
                 <div class="note">{{ $miLista->total() }} producto(s) registrado(s)</div>
                 <div class="search">
@@ -40,6 +47,14 @@
                                 <div class="product-card__name">{{ $p->name }}</div>
                                 <div class="product-card__price">$ {{ number_format($p->price, 0, ',', '.') }}</div>
                                 <div class="product-card__desc">{{ $p->description }}</div>
+
+                                {{-- Agregar al carrito --}}
+                                <form action="{{ route('cart.add', $p->id) }}" method="POST" style="margin-top:auto; padding-top:10px;">
+                                    @csrf
+                                    <button type="submit" class="btn btn-primary btn-sm" style="width:100%;">
+                                        🛒 Agregar al carrito
+                                    </button>
+                                </form>
                             </div>
 
                             <div class="product-card__footer">

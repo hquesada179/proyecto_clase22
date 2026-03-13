@@ -51,9 +51,24 @@
                 <p class="show-desc">{{ $product->description ?? 'Sin descripción disponible.' }}</p>
             </div>
 
+            @if(session('cart_success'))
+                <div style="padding:10px 14px; border-radius:9px; font-size:13px; font-weight:600;
+                            background:rgba(6,182,212,.12); border:1px solid rgba(6,182,212,.3); color:var(--accent);">
+                    🛒 {{ session('cart_success') }}
+                </div>
+            @endif
+
             <div class="show-actions">
+                {{-- Agregar al carrito --}}
+                <form action="{{ route('cart.add', $product->id) }}" method="POST">
+                    @csrf
+                    <button type="submit" class="btn btn-accent" style="font-weight:800;">
+                        🛒 Agregar al carrito
+                    </button>
+                </form>
+
                 @if($product->image)
-                    <a class="btn btn-accent"
+                    <a class="btn btn-outline"
                        href="{{ route('product.image', $product->id) }}"
                        target="_blank">
                         Ver imagen →
