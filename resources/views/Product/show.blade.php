@@ -9,7 +9,27 @@
             @if($product->image)
                 <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}">
             @else
-                <img src="https://placehold.co/400x400?text=Sin+imagen" alt="Sin imagen">
+                <div style="
+                    width: 100%;
+                    max-width: 400px;
+                    aspect-ratio: 1 / 1;
+                    border-radius: 14px;
+                    border: 1px solid var(--border);
+                    background: #f1f5f9;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 12px;
+                    color: #94a3b8;
+                ">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.2">
+                        <rect x="3" y="3" width="18" height="18" rx="3" stroke="currentColor" fill="none"/>
+                        <circle cx="8.5" cy="8.5" r="1.5" fill="currentColor" stroke="none"/>
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M21 15l-5-5L5 21"/>
+                    </svg>
+                    <span style="font-size:13px; font-weight:600; letter-spacing:.3px;">Sin imagen</span>
+                </div>
             @endif
         </div>
 

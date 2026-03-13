@@ -48,7 +48,7 @@ class ProductController extends Controller
 
     public function show($id)
     {
-        $product = Product::findOrFail($id);
+        $product = Product::with('category')->findOrFail($id);
         return view('product.show', ['product' => $product]);
     }
 
